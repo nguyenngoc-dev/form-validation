@@ -19,7 +19,7 @@
           <div class="form-group">
             <label for="fullname" class="form-label">Tên đầy đủ</label>
             <input id="fullname" name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
-            <span class="form-message"></span>
+            <span class="form-message"></span> 
           </div>
       
           <div class="form-group">
@@ -44,5 +44,18 @@
         </form>
       
       </div>
+      <script src="./assits/js/validator.js"></script>
+      <script>
+        //gọi khuôn mẫu với form để dùng cho nhiều form khác 
+        Validator({
+            form: "#form-1",
+            
+          rules:[
+            Validator.isRequired('#fullname'),
+            Validator.isEmail('#email'),
+            Validator.minLength('#password',8)
+          ]
+        })
+      </script>
 </body>
 </html>
