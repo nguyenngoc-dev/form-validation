@@ -68,6 +68,18 @@
   .form-control:hover {
     border-color: #1dbfaf;
   }
+  .radio-container{
+    display: flex;
+  }
+  .radio {
+    margin-right: 12px;
+  }
+  .radio-value{
+    position: relative;
+    left: -5px;
+    font-size: 12px;
+    top: -2px;
+  }
   
   .form-group.invalid .form-control {
     border-color: #f33a58;

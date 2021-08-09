@@ -36,7 +36,40 @@
       
           <div class="form-group">
             <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <input id="password_confirmation"  name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="avartar" class="form-label">avartar</label>
+            <input id="avartar"  name="avartar" type="file" class="form-control">
+            <span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Tỉnh Thành </label>
+            <select id="province" name="province"   class="form-control">
+              <option value="">--Tỉnh/Tp--</option>
+              <option value="hn">--Hà Nội--</option>
+              <option value="th">--Thanh Hóa--</option>
+            </select>
+            <span class="form-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="password_confirmation" class="form-label">Giới tính</label>
+            <div class = 'radio-container'>
+
+              <input name="gender"  type="radio" value="man" class=" radio">
+              <span class = 'radio-value'>Nam</span>
+            
+            
+
+              <input name="gender"  type="radio" value="woman" class=" radio">
+              <span class = 'radio-value' >Nữ</span>
+           
+            
+
+              <input name="gender"  type="radio" value="other" class=" radio">
+              <span class = 'radio-value' >Khác</span>
+            </div>
             <span class="form-message"></span>
           </div>
       
@@ -49,12 +82,25 @@
         //gọi khuôn mẫu với form để dùng cho nhiều form khác 
         Validator({
             form: "#form-1",
+            formGroup:'.form-group',
+            errorSelector:'.form-message',
             
           rules:[
             Validator.isRequired('#fullname'),
+            Validator.isRequired('#avartar'),
+            Validator.isRequired('#province'),
+            Validator.isRequired('#email'),
             Validator.isEmail('#email'),
-            Validator.minLength('#password',8)
-          ]
+            Validator.minLength('#password',8),
+            Validator.isRequired('#password_confirmation'),
+            Validator.confirm("#password_confirmation",  function() {
+              return document.querySelector('#form-1 #password').value;
+            },'Mật khẩu không tương ứng'),
+            Validator.isRequired('input[name="gender"]'),
+          ],
+          onsubmit: function(data) {
+            console.log(data);
+          }
         })
       </script>
 </body>
