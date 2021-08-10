@@ -18,19 +18,19 @@
       
           <div class="form-group">
             <label for="fullname" class="form-label">Tên đầy đủ</label>
-            <input id="fullname" name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
+            <input id="fullname" rule = "required"  name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
             <span class="form-message"></span> 
           </div>
       
           <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+            <label for="email"  class="form-label">Email</label>
+            <input id="email" name="email" type="text" rule = "required|email" placeholder="VD: email@domain.com" class="form-control">
             <span class="form-message"></span>
           </div>
       
           <div class="form-group">
             <label for="password" class="form-label">Mật khẩu</label>
-            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+            <input id="password" name="password"  rule = "required|min:5" type="password" placeholder="Nhập mật khẩu" class="form-control">
             <span class="form-message"></span>
           </div>
       
@@ -77,8 +77,10 @@
         </form>
       
       </div>
-      <script src="./assits/js/validator.js"></script>
-      <script>
+      <!-- cách 1 -->
+      <!-- <script src="./assits/js/validator1.js"></script> -->
+     
+      <!-- <script>
         //gọi khuôn mẫu với form để dùng cho nhiều form khác 
         Validator({
             form: "#form-1",
@@ -102,6 +104,14 @@
             console.log(data);
           }
         })
+      </script> -->
+      <!-- cách 2 -->
+       <script src="assits/js/validator2.js"></script>
+      <script>
+        var form = new Validator('#form-1')
+        form.onSubmit = function(data) {
+          console.log(data)
+        }
       </script>
 </body>
 </html>
